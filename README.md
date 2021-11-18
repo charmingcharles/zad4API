@@ -1,3 +1,5 @@
+# zad4API
+
 Stworzene przeze mnie API zwraca następujące arguemty:
 * original-text - oryginalny tekst
 * length - długość tekstu
@@ -35,5 +37,6 @@ Parametry:
 Request Body:
 wartość wynikowa [API](https://github.com/klesniewski50/zad3API)
 
-UWAGA
+# UWAGA
+
 API działa poprawnie tylko dla poprawnych danych, oznacza to, że typ danych wejściowych w "Request Body" musi zgadzać się z typem podanym w parametrze "from"
