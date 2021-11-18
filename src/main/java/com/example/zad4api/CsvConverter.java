@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class CsvConverter {
 
-    public static Map<String, Integer> toMap(String input) {
+    private static Map<String, Integer> toMap(String input) {
         String[] args = {"lowercase-count", "special-signs-count", "numbers-count", "uppercase-count", "length"};
         Map<String, Integer> output = new HashMap<>();
         for (int i = 0; i < 5; i++) {
