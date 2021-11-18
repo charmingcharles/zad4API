@@ -18,7 +18,10 @@ http://localhost:8100/anyresult?text=Karol&type=json
 ```
 Parametry:
 * text - tekst dla którego chcemy wykonać obliczenia
-* type - typ danych w którym ma zwrócić wynik (dostępne 4)
+* type - typ danych w którym ma zwrócić wynik - dostępne 4
+
+Request Body:
+pozostawić puste
 
 
 Wywołanie przeprowadzające zamianę wyniku pomiędzy typami danych:
@@ -28,3 +31,9 @@ http://localhost:8100/convert?from=json&to=xml
 Parametry:
 * from - typ danych z którego mamy przeprowadzić zamianę
 * to - typ danych do których mamy przeprowadzić zamianę
+
+Request Body:
+wartość wynikowa [API](https://github.com/klesniewski50/zad3API)
+
+UWAGA
+API działa poprawnie tylko dla poprawnych danych, oznacza to, że typ danych wejściowych w "Request Body" musi zgadzać się z typem podanym w parametrze "from"
