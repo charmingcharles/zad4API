@@ -34,24 +34,64 @@ public class MyRestController {
     }
 
     @RequestMapping(value = "/convert", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_XML_VALUE}) //example: http://localhost:8100/convert?from=json&to=xml
-    public String saveData(@RequestBody String text) {
-        //json -> all
-        //xml -> all - zaraz
-
-
-        //xml -> json
-        JSONObject json = XML.toJSONObject(text); //xml -> json
-        JSONArray mapa = json.getJSONObject("map").getJSONArray("entry");
-        for(int i = 0; i < 5; i++){
-            Map<String, Object> map = new Gson()
-                    .fromJson(mapa.getJSONObject(i).toString(), new TypeToken<HashMap<String, Object>>() {
-                    }.getType());
-            String operation = map.get("string").toString();
-            int index = operation.substring(1, operation.length() - 1).indexOf(",");
-            double result = Double.parseDouble(operation.substring(index + 3, operation.length() - 1));
-            System.out.println(result);
+    public String saveData(@RequestBody String body, @RequestParam(value = "from", defaultValue = "json") String from, @RequestParam(value = "to", defaultValue = "text") String to) {
+        if(from.equals("text")){
+            switch (to) {
+                case "json":
+                    return TextConverter.toJson(body);
+                case "xml":
+                    return TextConverter.toXML(body);
+                case "csv":
+                    return TextConverter.toCSV(body);
+                case "text":
+                    return body;
+                default:
+                    return "Error!";
+            }
         }
-        return text;
+        else if(from.equals("json")){
+            switch (to) {
+                case "xml":
+                    return JsonConverter.toXML(body);
+                case "csv":
+                    return JsonConverter.toCSV(body);
+                case "text":
+                    return JsonConverter.toText(body);
+                case "json":
+                    return body;
+                default:
+                    return "Error!";
+            }
+        }
+        else if(from.equals("xml")){
+            switch (to) {
+                case "json":
+                    return XmlConverter.toJson(body);
+                case "csv":
+                    return XmlConverter.toCSV(body);
+                case "text":
+                    return XmlConverter.toText(body);
+                case "xml":
+                    return body;
+                default:
+                    return "Error!";
+            }
+        }
+        else if(from.equals("csv")){
+            switch (to) {
+                case "json":
+                    return CsvConverter.toJson(body);
+                case "xml":
+                    return CsvConverter.toXML(body);
+                case "text":
+                    return CsvConverter.toText(body);
+                case "csv":
+                    return body;
+                default:
+                    return "Error!";
+            }
+        }
+        return body;
     }
 }
 

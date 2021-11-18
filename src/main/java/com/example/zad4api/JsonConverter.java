@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class JsonConverter {
 
-    public static String jsonToXML(String input){
+    public static String toXML(String input){
         Map<String, Object> map = new Gson()
                 .fromJson(input, new TypeToken<HashMap<String, Object>>() {
                 }.getType());
@@ -19,7 +19,7 @@ public class JsonConverter {
         return xStream.toXML(map);
     }
 
-    public static String jsonToText(String input){
+    public static String toText(String input){
         Map<String, Object> map = new Gson()
                 .fromJson(input, new TypeToken<HashMap<String, Object>>() {
                 }.getType());
@@ -30,7 +30,7 @@ public class JsonConverter {
         return output.toString();
     }
 
-    public static String jsonToCSV(String input){
+    public static String toCSV(String input){
         Map<String, Object> map = new Gson()
                 .fromJson(input, new TypeToken<HashMap<String, Object>>() {
                 }.getType());
